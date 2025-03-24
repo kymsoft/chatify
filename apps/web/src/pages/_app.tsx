@@ -52,7 +52,7 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
             md: 768,
             lg: 1024,
             xl: 1280,
-            xxl: 1536,
+            // xxl: 1536,
           },
         }}
         withGlobalStyles
