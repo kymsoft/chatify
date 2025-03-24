@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "~/features/auth";
 import { Logo } from "~/features/common";
@@ -51,7 +51,7 @@ const Login = () => {
         </Group>
 
         <Title align="center" className="font-bold">
-          Welcome back to Chatify!
+          Welcome back to Holla!
         </Title>
 
         <Text color="dimmed" size="sm" align="center" mt={5}>

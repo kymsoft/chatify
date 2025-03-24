@@ -36,7 +36,7 @@ export default function MyApp(props: AppProps & { colorScheme: ColorScheme }) {
   return (
     <>
       <Head>
-        <title>Chatify</title>
+        <title>Holla</title>
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <MantineProvider
