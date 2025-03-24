@@ -33,11 +33,11 @@ const Login = () => {
     try {
       const res = await login(form.values);
       console.log(res);
-      router.push("/chat");
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false);
+      router.push("/chat");
     }
   };
 
