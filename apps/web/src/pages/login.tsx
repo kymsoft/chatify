@@ -27,20 +27,21 @@ const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
-
+  
   const handleLogin = async () => {
     setLoading(true);
     try {
       const res = await login(form.values);
       console.log(res);
-      router.push("/chat");
+       // Ensure login is successful before redirecting
+        router.push("/chat");
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false);
-      
     }
   };
+  
 
   return (
     <form onSubmit={form.onSubmit(() => handleLogin())}>
