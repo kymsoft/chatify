@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAuth } from "~/features/auth";
 import { Logo } from "~/features/common";
@@ -33,11 +33,12 @@ const Login = () => {
     try {
       const res = await login(form.values);
       console.log(res);
+      router.push("/chat");
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false);
-      router.push("/chat");
+      
     }
   };
 
