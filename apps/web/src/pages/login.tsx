@@ -32,9 +32,13 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(form.values);
-      console.log(res);
-       // Ensure login is successful before redirecting
-        router.push("/chat");
+      console.log(res); // Debugging: Check what the response actually contains
+  
+      if (res && res.token) { // Ensure token is present
+        router.reload(); // Ensures middleware recognizes authentication
+      } else {
+        console.error("Login failed: No token returned.");
+      }
     } catch (e) {
       console.log(e);
     } finally {
