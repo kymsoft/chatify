@@ -32,12 +32,13 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(form.values);
-      console.log(res);
-      // Only redirect if login was successful
-      router.push("/chat");
+      if (res && res?.token) {
+        router.push("/chat");
+      } else {
+        form.setErrors({ password: 'Invalid credentials' });
+      }
     } catch (e) {
       console.log(e);
-      // Optionally show error message to user
       form.setErrors({ password: 'Invalid credentials' });
     } finally {
       setLoading(false);

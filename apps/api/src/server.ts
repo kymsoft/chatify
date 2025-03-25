@@ -27,7 +27,7 @@ configurePassport(app);
 
 const corsConfig = {
   credentials: true,
-  origin: true,
+  origin: 'https://chatify-orpin-theta.vercel.app',
 };
 
 app.use(cors(corsConfig));
