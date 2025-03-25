@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(req: NextRequest, res: NextResponse) {
-  const loggedIn = req.cookies.has("access-token");
+  const loggedIn = req.cookies.get("access-token");
   const { pathname } = req.nextUrl;
 
   if (
