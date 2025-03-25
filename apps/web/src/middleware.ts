@@ -5,9 +5,6 @@ export function middleware(req: NextRequest, res: NextResponse) {
   const loggedIn = req.cookies.get("access-token");
   const { pathname } = req.nextUrl;
 
-  console.log("middleware", pathname);
-  console.log("middleware", loggedIn);
-
   if (
     pathname.startsWith("/_next") || // exclude Next.js internals
     pathname.startsWith("/api") || //  exclude all API routes
@@ -17,7 +14,11 @@ export function middleware(req: NextRequest, res: NextResponse) {
     return NextResponse.next();
   }
 
-  if (!loggedIn && (pathname.startsWith("/chat") || pathname === "/")) {
+  // if (!loggedIn && (pathname.startsWith("/chat") || pathname === "/")) {
+  //   return NextResponse.redirect(new URL("/login", req.url));
+  // }
+
+  if (!loggedIn) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
