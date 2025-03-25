@@ -16,6 +16,7 @@ export interface ILoginReq {
 
 export interface ILoginRes {
   token: string;
+  message: string;
   expiresIn: IUser;
 }
 

@@ -32,7 +32,7 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(form.values);
-      if (res && res?.token) {
+      if (res && res?.message == "Logged in successfully") {
         router.push("/chat");
       } else {
         form.setErrors({ password: 'Invalid credentials' });
