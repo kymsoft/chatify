@@ -5,6 +5,9 @@ export function middleware(req: NextRequest, res: NextResponse) {
   const loggedIn = req.cookies.get("access-token");
   const { pathname } = req.nextUrl;
 
+  console.log("middleware", pathname);
+  console.log("middleware", loggedIn);
+
   if (
     pathname.startsWith("/_next") || // exclude Next.js internals
     pathname.startsWith("/api") || //  exclude all API routes
