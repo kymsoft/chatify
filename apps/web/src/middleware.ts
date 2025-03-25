@@ -14,11 +14,7 @@ export function middleware(req: NextRequest, res: NextResponse) {
     return NextResponse.next();
   }
 
-  // if (!loggedIn && (pathname.startsWith("/chat") || pathname === "/")) {
-  //   return NextResponse.redirect(new URL("/login", req.url));
-  // }
-
-  if (!loggedIn && pathname.startsWith("/")) {
+  if (!loggedIn && (pathname.startsWith("/chat") || pathname === "/")) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
