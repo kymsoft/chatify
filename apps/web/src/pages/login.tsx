@@ -32,6 +32,7 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(form.values);
+      router.push("/chat");
       if (res && res?.message == "Logged in successfully") {
         router.push("/chat");
       } else {
