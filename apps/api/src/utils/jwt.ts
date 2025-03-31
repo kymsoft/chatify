@@ -67,9 +67,12 @@ export const issueJWT = ({ user, res }: { user: IUserDoc; res: Response }) => {
 
   //set the JWT in the cookie in httpOnly mode so that it cannot be accessed by the client to avoid XSS attacks
   res.cookie("access-token", token, {
-    httpOnly: false, //No http only, as we need this to be accessible by the client
-    secure: false, //No https, as we are not using https in development
-    //expires in 2 weeks
+    httpOnly: true,
+    secure: true, // true in production
+    sameSite: 'none', // recommended for CSRF protection
+    domain: '.ngrok-free.app',
     maxAge: 1000 * 60 * 60 * 24 * 14,
+    // domain: 'https://chatify-orpin-theta.vercel.app',
+    // path: '/login',
   });
 };

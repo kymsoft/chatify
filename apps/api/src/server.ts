@@ -25,13 +25,18 @@ const server = http.createServer(app);
 
 configurePassport(app);
 
-const corsConfig = {
-  credentials: true,
-  origin: true,
-};
+const allowedOrigins = [
+  'https://chatify-orpin-theta.vercel.app',
+  'http://localhost:3001', // Optional: For local testing
+  'https://9ffc-102-90-97-216.ngrok-free.app'
+];
 
-app.use(cors(corsConfig));
-
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true // If using cookies/auth tokens
+}));
+app.options("*", cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -61,7 +66,7 @@ const io = new Server<
 >(server, {
   cookie: true,
   cors: {
-    origin: "*",
+    origin: allowedOrigins,
     credentials: true,
   },
 });
