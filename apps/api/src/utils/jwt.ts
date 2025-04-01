@@ -67,8 +67,8 @@ export const issueJWT = ({ user, res }: { user: IUserDoc; res: Response }) => {
 
   //set the JWT in the cookie in httpOnly mode so that it cannot be accessed by the client to avoid XSS attacks
   res.cookie("access-token", token, {
-    httpOnly: true,
-    secure: true, // true in production
+    httpOnly: false,
+    secure: false, // true in production
     sameSite: 'none', // recommended for CSRF protection
     domain: '.ngrok-free.app',
     maxAge: 1000 * 60 * 60 * 24 * 14,
