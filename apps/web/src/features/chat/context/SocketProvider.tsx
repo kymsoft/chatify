@@ -4,7 +4,10 @@ import { io } from 'socket.io-client';
 import { useAuth } from '~/features/auth';
 import { SocketContext } from './SocketContext';
 
-const socket = io(process.env.NEXT_PUBLIC_SOCKET_URI);
+const socket = io(process.env.NEXT_PUBLIC_SOCKET_URI,{
+  secure: true,
+  transports: ['websocket', 'polling'],
+});
 
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   //const [socket, setSocket] = useState<Socket | null>(null);
